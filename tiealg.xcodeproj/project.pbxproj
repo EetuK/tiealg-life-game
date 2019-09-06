@@ -46,7 +46,6 @@
 		5065A27F23225B29004DD0BB = {
 			isa = PBXGroup;
 			children = (
-				5065A29223225CEB004DD0BB /* examples */,
 				5065A28A23225B29004DD0BB /* tiealg */,
 				5065A28923225B29004DD0BB /* Products */,
 			);
@@ -70,13 +69,6 @@
 				50302FD6232272C4004004E1 /* coords.txt */,
 			);
 			path = tiealg;
-			sourceTree = "<group>";
-		};
-		5065A29223225CEB004DD0BB /* examples */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = examples;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
