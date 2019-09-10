@@ -12,28 +12,16 @@ int Life::neighbor_count(int row, int col)
 {
     int i, j;
     int count = 0;
+
     
-    int rowI = 0;
-    int colI = 0;
-    int rowMax = 0;
-    int colMax = 0;
+    for (i = row; i <= row; i++)
+        for (j = col; j <= col; j++)
+            try{
+                count += grid[i][j];  //  Increase the count if neighbor is alive.
+            }catch(exception){
+                
+            }
     
-    if (row - 1 < 0){
-        rowI = 0;
-    }
-    if (col - 1 < 0){
-        colI = 0;
-    }
-    if (row + 1 >= maxrow +1){
-        rowMax = maxrow;
-    }
-    if (col + 1  >= maxcol +1){
-        colMax = maxcol;
-    }
-    
-    for (i = row - 1; i <= row; i++)
-        for (j = col - 1; j <= col; j++)
-            count += grid[i][j];  //  Increase the count if neighbor is alive.
     count -= grid[row][col]; //  Reduce count, since cell is not its own neighbor.
     return count;
 }
@@ -46,10 +34,10 @@ void Life::update()
 
 {
     int row, col;
-    int new_grid[maxrow + 2][maxcol + 2];
+    int new_grid[maxrow][maxcol];
     
-    for (row = 1; row <= maxrow; row++)
-        for (col = 1; col <= maxcol; col++)
+    for (row = 0; row <= maxrow; row++)
+        for (col = 0; col <= maxcol; col++)
             switch (neighbor_count(row, col)) {
                 case 2:
                     new_grid[row][col] = grid[row][col];  //  Status stays the same.
@@ -61,8 +49,8 @@ void Life::update()
                     new_grid[row][col] = 0;                //  Cell is now dead.
             }
     
-    for (row = 1; row <= maxrow; row++)
-        for (col = 1; col <= maxcol; col++)
+    for (row = 0; row <= maxrow; row++)
+        for (col = 0; col <= maxcol; col++)
             grid[row][col] = new_grid[row][col];
 }
 
@@ -105,8 +93,8 @@ void Life::print()
 {
     int row, col;
     cout << "\nThe current Life configuration is:" <<endl;
-    for (row = 1; row <= maxrow; row++) {
-        for (col = 1; col <= maxcol; col++)
+    for (row = 0; row <= maxrow; row++) {
+        for (col = 0; col <= maxcol; col++)
             if (grid[row][col] == 1) cout << '*';
             else cout << '-';
         cout << endl;
