@@ -15,7 +15,7 @@ int Life::neighbor_count(int row, int col)
     for (i = row - 1; i <= row + 1; i++)
         for (j = col - 1; j <= col + 1; j++)
             try{
-            count += grid[i][j];  //  Increase the count if neighbor is alive.
+                count += grid[i][j];  //  Increase the count if neighbor is alive.
             }catch(...){
                 
             }
@@ -91,7 +91,7 @@ void Life::print()
     int row, col;
     cout << "\nThe current Life configuration is:" <<endl;
     for (row = 0; row < maxrow; row++) {
-        for (col = 1; col < maxcol; col++)
+        for (col = 0; col < maxcol; col++)
             if (grid[row][col] == 1) cout << '*';
             else cout << '-';
         cout << endl;
