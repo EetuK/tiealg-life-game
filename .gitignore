@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+
+.DS_Store
+tiealg.xcodeproj/project.xcworkspace/xcuserdata/eetukoskelainen.xcuserdatad/UserInterfaceState.xcuserstate
