@@ -23,9 +23,7 @@ void instructions()
 
 {
     cout << "Welcome to Conway's game of Life." << endl;
-    cout << "This game uses a grid of size "
-    << maxrow << " by " << maxcol << " in which" << endl;
-    cout << "each cell can either be occupied by an organism or not." << endl;
+    cout << "Each cell can either be occupied by an organism or not." << endl;
     cout << "The occupied cells change from generation to generation" << endl;
     cout << "according to the number of neighboring cells which are alive."
     << endl;
@@ -50,3 +48,5 @@ bool user_says_yes()
     } while (c != 'y' && c != 'Y' && c != 'n' && c != 'N');
     return (c == 'y' || c == 'Y');
 }
+
+

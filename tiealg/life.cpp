@@ -1,5 +1,5 @@
 #include "life.hpp"
-#include <iostream>
+
 using namespace std;
 
 int Life::neighbor_count(int row, int col)
@@ -56,6 +56,23 @@ void Life::initialize()
  */
 
 {
+    cout << "Max row:" << endl;
+    maxrow = ask_number(50, "Invalid input, try again:");
+    while(maxrow == -1){
+        maxrow = ask_number(50, "Invalid input, try again:");
+    }
+    cout << "Max col:" << endl;
+    maxcol = ask_number(50, "Invalid input, try again:");
+    while(maxcol == -1){
+        maxcol = ask_number(50, "Invalid input, try again:");
+    }
+    
+    // Initialize 2d arr
+    grid = new int*[maxcol+2];
+    for(int i = 0; i < maxrow+2; ++i)
+        grid[i] = new int[maxcol];
+    
+    
     int row, col;
     for (row = 0; row <= maxrow+1; row++)
         for (col = 0; col <= maxcol+1; col++)
@@ -89,11 +106,25 @@ void Life::print()
     for (row = 1; row <= maxrow; row++) {
         for (col = 1; col <= maxcol; col++)
             if (grid[row][col] == 1) cout << '*';
-            else cout << ' ';
+            else cout << '-';
         cout << endl;
     }
     cout << endl;
 }
 
-
+int Life::ask_number(int max_number, string message){
+    int n;
+    cin >> n;
+    if(!cin  || n > max_number)
+    {
+        // user didn't input a number
+        cin.clear(); // reset failbit
+        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //skip bad input
+        // next, request user reinput
+        cout << message << endl;
+        return -1;
+    }else{
+        return n;
+    }
+}
 
