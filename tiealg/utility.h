@@ -50,3 +50,21 @@ bool user_says_yes()
     } while (c != 'y' && c != 'Y' && c != 'n' && c != 'N');
     return (c == 'y' || c == 'Y');
 }
+
+int ask_seconds(){
+    int secs = 0;
+    string input;
+    bool error = false;
+    do {
+        error = false;
+        cout << "Set delay between generations:" << endl;
+        cin >> input;
+        try{
+            secs = stoi(input);
+        }catch(...){
+            cout << "Error, try again:" << endl;
+            error = true;
+        }
+    }while(error);
+    return secs;
+}

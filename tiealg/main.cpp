@@ -1,6 +1,8 @@
 #include "life.hpp"
 #include "utility.h"
 #include <iostream>
+#include <chrono>
+#include <thread>
 using namespace std;
 
 
@@ -15,15 +17,27 @@ int main()  //  Program to play Conway's game of Life.
  */
 
 {
+    int seconds = 0;
     Life configuration;
     instructions();
+    seconds = ask_seconds();
     configuration.initialize();
     configuration.print();
     cout << "Continue viewing new generations? " << endl;
-    while (user_says_yes()) {
-        configuration.update();
-        configuration.print();
-        cout << "Continue viewing new generations? " << endl;
+    if(seconds != 0){
+        while(1){
+            cout << "New generation:" << endl;
+            configuration.update();
+            configuration.print();
+            std::this_thread::sleep_for(std::chrono::seconds(seconds));
+        }
+    }else{
+        while (user_says_yes()) {
+            configuration.update();
+            configuration.print();
+            cout << "Continue viewing new generations? " << endl;
+        }
     }
+    
 }
 
