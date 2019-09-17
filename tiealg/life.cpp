@@ -49,11 +49,10 @@ void Life::update()
 
 
 
-void Life::initialize()
-/*
- Pre:  None.
- Post: The Life object contains a configuration specified by the user.
- */
+/*void Life::initialize()
+ //Pre:  None.
+ //Post: The Life object contains a configuration specified by the user.
+ 
 
 {
     int row, col;
@@ -73,6 +72,43 @@ void Life::initialize()
             else
                 cout << "Row " << row << " is out of range." << endl;
         cin >> row >> col;
+    }
+}*/
+
+void Life::initialize(){
+    int row, col;
+    string userRow = "";
+    bool error = false;
+    
+    // Zero coords
+    for (row = 0; row <= maxrow+1; row++)
+        for (col = 0; col <= maxcol+1; col++)
+            grid[row][col] = 0;
+    
+    cout << "List " << maxcol << " coords as x and - for each row:" << endl;
+    for (row = 1; row <= maxrow; row++){
+        do{
+            error = false;
+        cout << "Row" << row << ":";
+        cin >> userRow;
+        
+        for (int i = 0; i < userRow.size(); i++){
+            if (userRow.size() > maxcol){
+                cout << "Too many characters!" << endl;
+                error = true;
+                break;
+            }
+            if ((char)userRow[i] == '-'){
+                grid[row][i] = 0;
+            }else if ((char)userRow[i] == 'x'){
+                grid[row][i] = 1;
+            }else{
+                cout << "Wrong character in row. Try again:" << endl;
+                error = true;
+                break;
+            }
+        }
+        }while(error);
     }
 }
 

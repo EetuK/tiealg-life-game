@@ -13,7 +13,7 @@
 
 #endif /* life_hpp */
 
-const int maxrow = 20, maxcol = 60;    //  grid dimensions
+const int maxrow = 10, maxcol = 10;    //  grid dimensions
 
 class Life {
 public:
